@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>HobbyMatch — Reset Password</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: -apple-system, sans-serif; background: #085041; color: #fff;
+           display: flex; align-items: center; justify-content: center;
+           min-height: 100vh; margin: 0; text-align: center; padding: 20px; }
+    .card { background: rgba(255,255,255,0.1); border-radius: 20px; padding: 40px 30px; max-width: 360px; }
+    h1 { font-size: 24px; margin-bottom: 8px; }
+    p { color: rgba(255,255,255,0.7); font-size: 15px; line-height: 1.5; }
+    .btn { display: inline-block; margin-top: 24px; background: #1D9E75;
+           color: #fff; text-decoration: none; padding: 14px 32px;
+           border-radius: 999px; font-weight: 600; font-size: 16px; }
+    .debug { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 16px; word-break: break-all; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>hobbymatch</h1>
+    <p>Opening the app to reset your password…</p>
+    <a class="btn" id="openApp" href="#">Open HobbyMatch</a>
+    <p class="debug" id="debug"></p>
+  </div>
+  <script>
+    function getParams() {
+      const params = {};
+      window.location.search.substring(1).split('&').forEach(p => {
+        const [k, v] = p.split('=');
+        if (k) params[k] = decodeURIComponent(v || '');
+      });
+      window.location.hash.substring(1).split('&').forEach(p => {
+        const [k, v] = p.split('=');
+        if (k) params[k] = decodeURIComponent(v || '');
+      });
+      return params;
+    }
+
+    const params = getParams();
+    const hasAccessToken  = !!params.access_token;
+    const hasRefreshToken = !!params.refresh_token;
+    const type            = params.type || 'none';
+
+    document.getElementById('debug').textContent =
+      'type=' + type +
+      ' access_token=' + hasAccessToken +
+      ' refresh_token=' + hasRefreshToken +
+      ' code=' + !!params.code +
+      ' token=' + !!params.token;
+
+    let deepLink = 'hobbymatch://reset-password?type=recovery';
+    if (params.access_token)  deepLink += '&access_token='  + encodeURIComponent(params.access_token);
+    if (params.refresh_token) deepLink += '&refresh_token=' + encodeURIComponent(params.refresh_token);
+    if (params.code)          deepLink += '&code='          + encodeURIComponent(params.code);
+    if (params.token)         deepLink += '&token='         + encodeURIComponent(params.token);
+    if (params.expires_in)    deepLink += '&expires_in='    + encodeURIComponent(params.expires_in);
+
+    document.getElementById('openApp').href = deepLink;
+    setTimeout(() => { window.location.href = deepLink; }, 500);
+  </script>
+</body>
+</html>
