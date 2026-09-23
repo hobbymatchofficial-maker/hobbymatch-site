@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <meta name="referrer" content="no-referrer">
   <title>HobbyMatch — Reset Password</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
@@ -39,26 +40,27 @@
     }
 
     const params = getParams();
-    const hasAccessToken  = !!params.access_token;
-    const hasRefreshToken = !!params.refresh_token;
     const type            = params.type || 'none';
 
     document.getElementById('debug').textContent =
       'type=' + type +
-      ' access_token=' + hasAccessToken +
-      ' refresh_token=' + hasRefreshToken +
       ' code=' + !!params.code +
       ' token=' + !!params.token;
 
     let deepLink = 'hobbymatch://reset-password?type=recovery';
-    if (params.access_token)  deepLink += '&access_token='  + encodeURIComponent(params.access_token);
-    if (params.refresh_token) deepLink += '&refresh_token=' + encodeURIComponent(params.refresh_token);
     if (params.code)          deepLink += '&code='          + encodeURIComponent(params.code);
     if (params.token)         deepLink += '&token='         + encodeURIComponent(params.token);
     if (params.expires_in)    deepLink += '&expires_in='    + encodeURIComponent(params.expires_in);
 
+    window.history.replaceState({}, document.title, '/reset-password');
+
+    if (!params.code && !params.token) {
+      document.querySelector('.card p').textContent = 'This password reset link is invalid or has expired. Request a new link from HobbyMatch.';
+      document.getElementById('openApp').style.display = 'none';
+    }
+
     document.getElementById('openApp').href = deepLink;
-    setTimeout(() => { window.location.href = deepLink; }, 500);
+    if (params.code || params.token) setTimeout(() => { window.location.href = deepLink; }, 500);
   </script>
 </body>
 </html>

@@ -36,7 +36,7 @@
       <li><strong>Account information</strong> — your name, email address, location and age range when you create an account</li>
       <li><strong>Profile information</strong> — your interests, hobbies, profile photo and cover photo</li>
       <li><strong>Session data</strong> — hobby sessions you log including title, duration, rating, notes and photos</li>
-      <li><strong>Location data</strong> — approximate location used to find nearby venues (only when you grant permission)</li>
+      <li><strong>Location data</strong> — precise device coordinates when you grant permission, plus the city or general area used for nearby discovery and group-session matching</li>
       <li><strong>Usage data</strong> — how you interact with the app including features used and content viewed</li>
       <li><strong>Device information</strong> — device type, operating system and push notification tokens</li>
     </ul>
@@ -48,7 +48,7 @@
       <li>To show you nearby venues and clubs relevant to your hobbies</li>
       <li>To enable social features including following, likes and comments</li>
       <li>To send push notifications about activity from people you follow</li>
-      <li>To improve the app through aggregated usage analytics</li>
+      <li>To diagnose reliability problems and, when enabled, understand aggregated feature usage</li>
       <li>To respond to support requests</li>
     </ul>
 
@@ -56,7 +56,7 @@
     <p>We do not sell your personal data. We share your information only in these circumstances:</p>
     <ul>
       <li><strong>With other users</strong> — your profile, interests and shared sessions are visible to other HobbyMatch users according to your privacy settings</li>
-      <li><strong>Service providers</strong> — we use Supabase for database and authentication, and Anthropic's Claude API for hobby matching. These providers process data on our behalf under strict data protection agreements</li>
+      <li><strong>Service providers</strong> — providers supporting database/authentication, hosting, hobby recommendations, maps and places, transactional email, push notifications, images and sign-in may process the minimum data required to provide those services. Current providers include Supabase, Anthropic, Google, Railway, Upstash, Resend, Expo and Unsplash</li>
       <li><strong>Legal requirements</strong> — we may disclose information if required by law or to protect the rights and safety of our users</li>
     </ul>
 
@@ -64,7 +64,7 @@
     <p>Your data is stored securely on Supabase servers located in the European Union. We use industry-standard encryption for data in transit and at rest.</p>
 
     <h2>5. Location Data</h2>
-    <p>Location access is used only to find nearby hobby venues and to auto-detect your location for your profile. We do not store your precise GPS coordinates. Location data is processed on-device and only the resulting city or area is stored.</p>
+    <p>When you grant location permission, HobbyMatch may store coordinates to calculate distance and match you with nearby people, venues or group sessions. Other users should receive only a general area or calculated distance, not your stored coordinates. You can withdraw device permission, but information already required for an active session may be retained until that session expires or is deleted.</p>
 
     <h2>6. Your Rights</h2>
     <p>You have the right to:</p>
@@ -88,7 +88,7 @@
 
     <h2>10. Contact Us</h2>
     <p>If you have any questions about this privacy policy or your data, please contact us at:<br>
-    <a href="mailto:hobbymatchofficial@gmail.com">hobbymatchofficial@gmail.com</a></p>
+    <a href="mailto:support@hobbymatch.fit">support@hobbymatch.fit</a></p>
   </div>
   <footer>© 2026 HobbyMatch · <a href="/support" style="color:rgba(255,255,255,0.4)">Support</a> · <a href="/" style="color:rgba(255,255,255,0.4)">Home</a></footer>
 </body>
