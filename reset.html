@@ -44,23 +44,25 @@
 
     document.getElementById('debug').textContent =
       'type=' + type +
-      ' code=' + !!params.code +
-      ' token=' + !!params.token;
+      ' code=' + !!params.code;
 
+    // Only a PKCE code is forwarded. It can only be redeemed by the app
+    // install that requested the reset (it holds the matching verifier), so
+    // passing it through this page is safe. Token hashes are no longer
+    // forwarded: they work on any device, which let a crafted link sign
+    // someone into another person's account.
     let deepLink = 'hobbymatch://reset-password?type=recovery';
-    if (params.code)          deepLink += '&code='          + encodeURIComponent(params.code);
-    if (params.token)         deepLink += '&token='         + encodeURIComponent(params.token);
-    if (params.expires_in)    deepLink += '&expires_in='    + encodeURIComponent(params.expires_in);
+    if (params.code) deepLink += '&code=' + encodeURIComponent(params.code);
 
     window.history.replaceState({}, document.title, '/reset-password');
 
-    if (!params.code && !params.token) {
+    if (!params.code) {
       document.querySelector('.card p').textContent = 'This password reset link is invalid or has expired. Request a new link from HobbyMatch.';
       document.getElementById('openApp').style.display = 'none';
     }
 
     document.getElementById('openApp').href = deepLink;
-    if (params.code || params.token) setTimeout(() => { window.location.href = deepLink; }, 500);
+    if (params.code) setTimeout(() => { window.location.href = deepLink; }, 500);
   </script>
 </body>
 </html>
