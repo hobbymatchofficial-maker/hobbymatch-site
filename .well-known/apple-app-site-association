@@ -6,8 +6,7 @@
         "appID": "53R6FVQU36.com.hobbymatchofficial.app",
         "paths": [
           "/reset-password",
-          "/reset-password/*",
-          "/l/*"
+          "/reset-password/*"
         ]
       }
     ]
