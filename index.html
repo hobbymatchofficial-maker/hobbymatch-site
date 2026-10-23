@@ -1,246 +1,187 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <meta charset="utf-8">
-  <title>HobbyMatch — Find hobbies that fit</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Discover hobbies matched to your personality. Track sessions, earn trophies, check in at local venues and connect with fellow hobbyists.">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #060f0c; color: #fff; min-height: 100vh; }
-
-    /* Nav */
-    nav { display: flex; align-items: center; justify-content: space-between; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.06); }
-    .logo { font-size: 22px; font-weight: 700; color: #fff; text-decoration: none; }
-    .logo span { color: #5DCAA5; }
-    .nav-links { display: flex; gap: 24px; }
-    .nav-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; }
-    .nav-links a:hover { color: #fff; }
-
-    /* Hero */
-    .hero { text-align: center; padding: 100px 24px 80px; position: relative; overflow: hidden; }
-    .hero::before { content: ''; position: absolute; top: -200px; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(29,158,117,0.15) 0%, transparent 70%); pointer-events: none; }
-    .badge { display: inline-block; background: rgba(29,158,117,0.15); border: 1px solid rgba(29,158,117,0.3); color: #5DCAA5; font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 999px; margin-bottom: 24px; letter-spacing: 0.5px; }
-    .hero h1 { font-size: clamp(36px, 6vw, 64px); font-weight: 800; line-height: 1.1; margin-bottom: 20px; letter-spacing: -1px; }
-    .hero h1 span { color: #5DCAA5; }
-    .hero p { font-size: clamp(16px, 2vw, 20px); color: rgba(255,255,255,0.6); max-width: 520px; margin: 0 auto 48px; line-height: 1.6; }
-
-    /* Download buttons */
-    .download-row { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 64px; }
-    .store-btn { display: flex; align-items: center; gap: 12px; background: #fff; color: #000; text-decoration: none; padding: 14px 24px; border-radius: 14px; transition: transform 0.2s, opacity 0.2s; }
-    .store-btn:hover { transform: translateY(-2px); opacity: 0.9; }
-    .store-btn.dark { background: #1a1a1a; color: #fff; border: 1px solid rgba(255,255,255,0.1); }
-    .store-btn-icon { font-size: 28px; line-height: 1; }
-    .store-btn-text { text-align: left; }
-    .store-btn-sub { font-size: 11px; opacity: 0.6; display: block; }
-    .store-btn-name { font-size: 16px; font-weight: 700; display: block; }
-
-    /* Phone mockup */
-    .phone-wrap { position: relative; display: inline-block; margin-bottom: 80px; }
-    .phone { width: 260px; height: 520px; background: linear-gradient(145deg, #0F4C35, #085041); border-radius: 40px; border: 2px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05); }
-    .phone-screen { padding: 24px; width: 100%; }
-    .phone-logo { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 16px; }
-    .phone-logo span { color: #5DCAA5; }
-    .phone-greeting { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 4px; }
-    .phone-sub { font-size: 11px; color: rgba(255,255,255,0.5); margin-bottom: 20px; }
-    .phone-card { background: rgba(255,255,255,0.08); border-radius: 14px; padding: 14px; margin-bottom: 10px; border: 1px solid rgba(255,255,255,0.06); }
-    .phone-card-title { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 4px; }
-    .phone-card-sub { font-size: 11px; color: rgba(255,255,255,0.5); }
-    .phone-card-match { font-size: 10px; color: #5DCAA5; font-weight: 600; float: right; }
-    .phone-xp { background: rgba(29,158,117,0.2); border-radius: 10px; padding: 10px 14px; margin-bottom: 10px; }
-    .phone-xp-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
-    .phone-xp-label { font-size: 11px; color: #5DCAA5; font-weight: 600; }
-    .phone-xp-bar { height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; }
-    .phone-xp-fill { height: 4px; background: #5DCAA5; border-radius: 2px; width: 55%; }
-    .phone-notch { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); width: 80px; height: 6px; background: rgba(0,0,0,0.5); border-radius: 3px; }
-
-    /* Features */
-    .features { padding: 80px 24px; max-width: 1000px; margin: 0 auto; }
-    .features h2 { text-align: center; font-size: clamp(28px, 4vw, 40px); font-weight: 800; margin-bottom: 16px; }
-    .features-sub { text-align: center; color: rgba(255,255,255,0.5); font-size: 16px; margin-bottom: 60px; }
-    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
-    .feature-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 20px; padding: 28px; transition: border-color 0.2s; }
-    .feature-card:hover { border-color: rgba(29,158,117,0.3); }
-    .feature-icon { font-size: 32px; margin-bottom: 16px; }
-    .feature-title { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
-    .feature-desc { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.6; }
-
-    /* Stats */
-    .stats { background: rgba(29,158,117,0.08); border-top: 1px solid rgba(29,158,117,0.15); border-bottom: 1px solid rgba(29,158,117,0.15); padding: 60px 24px; }
-    .stats-inner { max-width: 800px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 40px; text-align: center; }
-    .stat-num { font-size: 40px; font-weight: 800; color: #5DCAA5; margin-bottom: 6px; }
-    .stat-lbl { font-size: 14px; color: rgba(255,255,255,0.5); }
-
-    /* CTA */
-    .cta { text-align: center; padding: 100px 24px; }
-    .cta h2 { font-size: clamp(28px, 4vw, 44px); font-weight: 800; margin-bottom: 16px; }
-    .cta p { color: rgba(255,255,255,0.5); font-size: 16px; margin-bottom: 40px; }
-
-    /* Footer */
-    footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 32px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: gap; gap: 16px; }
-    .footer-logo { font-size: 18px; font-weight: 700; }
-    .footer-logo span { color: #5DCAA5; }
-    .footer-links { display: flex; gap: 24px; }
-    .footer-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 13px; }
-    .footer-links a:hover { color: #fff; }
-    .footer-copy { color: rgba(255,255,255,0.3); font-size: 12px; }
-
-    @media (max-width: 600px) {
-      nav { padding: 16px 20px; }
-      .nav-links { display: none; }
-      footer { flex-direction: column; text-align: center; padding: 24px 20px; }
-    }
-  </style>
+  <title>HobbyMatch: find a hobby that fits, near you</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Answer four questions about pace, budget, company and distance. HobbyMatch shows hobbies, venues, sessions and leagues near you, and helps you keep going.">
+  <meta name="theme-color" content="#131210">
+  <meta property="og:title" content="HobbyMatch: four questions, then something to do on Saturday">
+  <meta property="og:description" content="Hobbies, venues, sessions and leagues near you, picked from four quick questions.">
+  <meta property="og:image" content="https://hobbymatch.fit/assets/img/kickboxing.jpg">
+  <link rel="preload" href="/assets/fonts/archivo-var.woff" as="font" type="font/woff" crossorigin>
+  <link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>
-
-  <nav>
-    <a href="/" class="logo">hobby<span>match</span></a>
-    <div class="nav-links">
-      <a href="/support">Support</a>
-      <a href="https://apps.apple.com/app/id6762534449">App Store</a>
+  <header class="nav">
+    <div class="wrap">
+      <a class="wordmark" href="/">hobby<span>match</span></a>
+      <ul class="nav-links">
+        <li class="hide-sm"><a href="#how">How it works</a></li>
+        <li class="hide-sm"><a href="#leagues">Leagues</a></li>
+        <li class="hide-sm"><a href="/support">Support</a></li>
+        <li><a class="btn btn-primary btn-small" href="#get">Get the app</a></li>
+      </ul>
     </div>
-  </nav>
+  </header>
 
-  <section class="hero">
-    <div class="badge">Now available on iOS & Android</div>
-    <h1>Find hobbies that<br><span>actually suit you</span></h1>
-    <p>Personalised hobby recommendations, session tracking, local venue discovery and a community of fellow hobbyists — all in one app.</p>
-
-    <div class="download-row">
-      <a href="https://apps.apple.com/app/id6762534449" class="store-btn">
-        <div class="store-btn-icon">🍎</div>
-        <div class="store-btn-text">
-          <span class="store-btn-sub">Download on the</span>
-          <span class="store-btn-name">App Store</span>
+  <main>
+    <section class="hero">
+      <div class="hero-photo">
+        <img src="/assets/img/kickboxing.jpg" srcset="/assets/img/kickboxing-sm.jpg 720w, /assets/img/kickboxing.jpg 1143w" sizes="100vw" alt="A woman in boxing gloves throwing a kick in a gym, smiling.">
+      </div>
+      <div class="wrap hero-copy">
+        <h1 class="display">Four questions, then something to do on Saturday.</h1>
+        <p class="hero-sub">Tell HobbyMatch how you want it to feel, what you'd spend, whether you want company and how far you'll travel. It shows you hobbies, venues and sessions near you that fit.</p>
+        <div class="store-row">
+          <a class="btn btn-primary" href="https://apps.apple.com/app/id6762534449">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg>
+            Download for iPhone
+          </a>
+          <span class="store-note">Android is coming soon.</span>
         </div>
-      </a>
-      <a href="https://play.google.com/store/apps/details?id=com.hobbymatchofficial.app" class="store-btn dark">
-        <div class="store-btn-icon">▶</div>
-        <div class="store-btn-text">
-          <span class="store-btn-sub">Get it on</span>
-          <span class="store-btn-name">Google Play</span>
-        </div>
-      </a>
-    </div>
+      </div>
+    </section>
 
-    <div class="phone-wrap">
-      <div class="phone">
-        <div class="phone-notch"></div>
-        <div class="phone-screen">
-          <div class="phone-logo">hobby<span>match</span></div>
-          <div class="phone-greeting">Good morning, Alex</div>
-          <div class="phone-sub">Your personalised hobby matches ✨</div>
-          <div class="phone-xp">
-            <div class="phone-xp-row">
-              <span class="phone-xp-label">Lv 3 · Enthusiast</span>
-              <span style="font-size:11px;color:rgba(255,255,255,0.4)">550 XP</span>
+    <section class="section" id="how">
+      <div class="wrap">
+        <h2 class="title">From not sure what to try, to doing it every week</h2>
+        <ol class="steps">
+          <li>
+            <h3>Answer four questions</h3>
+            <p>Pace, budget, whether you want company, and how far you'll go. About 90 seconds, and nothing else.</p>
+          </li>
+          <li>
+            <h3>See hobbies that fit</h3>
+            <p>Every match says why it suits you, what it costs, and how many places to do it are nearby.</p>
+          </li>
+          <li>
+            <h3>Go along</h3>
+            <p>Join a session another hobbyist has posted, find a club or venue, or start on your own.</p>
+          </li>
+          <li>
+            <h3>Keep it going</h3>
+            <p>Log what you did in a few taps, build a weekly streak, and play people in a league.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap split">
+        <div>
+          <h2 class="title">Matches that say why they fit</h2>
+          <p class="lede">No percentages to decode. A strong match is one that fits all four of your answers, and the card tells you what it's like and what's within reach.</p>
+          <ul class="points">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span><strong>Real places nearby.</strong> Venues, clubs and classes inside the distance you chose.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span><strong>What's on this weekend.</strong> Events and sessions for your hobbies, with the hobby named on each one.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="7" r="4"/><path d="M3 21v-1a6 6 0 0 1 12 0v1M16 3.1a4 4 0 0 1 0 7.8M21 21v-1a6 6 0 0 0-4-5.6"/></svg><span><strong>People who do it too.</strong> Follow hobbyists near you and plan a first session together.</span></li>
+          </ul>
+        </div>
+        <div class="stage" aria-label="Example of a hobby match in the app">
+          <article class="card photo-card">
+            <div class="photo">
+              <img src="/assets/img/garden.jpg" srcset="/assets/img/garden-sm.jpg 720w, /assets/img/garden.jpg 1200w" sizes="(min-width: 900px) 520px, 100vw" alt="Hands planting seedlings in soil.">
+              <span class="pill">Strong match</span>
             </div>
-            <div class="phone-xp-bar"><div class="phone-xp-fill"></div></div>
-          </div>
-          <div class="phone-card">
-            <span class="phone-card-match">94% match</span>
-            <div class="phone-card-title">Competitive Tennis</div>
-            <div class="phone-card-sub">Outdoor · Social · Active</div>
-          </div>
-          <div class="phone-card">
-            <span class="phone-card-match">88% match</span>
-            <div class="phone-card-title">Road Cycling</div>
-            <div class="phone-card-sub">Outdoor · Solo or Group</div>
-          </div>
-          <div class="phone-card">
-            <span class="phone-card-match">81% match</span>
-            <div class="phone-card-title">Photography</div>
-            <div class="phone-card-sub">Creative · Solo · Flexible</div>
+            <div class="body">
+              <h3 class="card-title">Community gardening</h3>
+              <p class="card-text">Calm pace, outdoors, and <b>12 gardens within 2 miles</b>, social only when you want it.</p>
+              <div class="tags"><span class="tag">Up to £100 a year</span><span class="tag">Beginner friendly</span><span class="tag">Outdoors</span></div>
+            </div>
+          </article>
+          <div class="mini-row">
+            <div class="mini">
+              <img src="/assets/img/kickboxing-sm.jpg" alt="">
+              <div><strong>Kickboxing</strong><span>Strong match, 1.1 miles</span></div>
+            </div>
+            <div class="mini">
+              <img src="/assets/img/leaves-sm.jpg" alt="">
+              <div><strong>Indoor plants</strong><span>Good match, at home</span></div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="features">
-    <h2>Everything you need to<br>build a hobby life</h2>
-    <p class="features-sub">From discovery to habit — HobbyMatch supports every step.</p>
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-icon">🎯</div>
-        <div class="feature-title">Personalised Matches</div>
-        <div class="feature-desc">Get hobby recommendations tailored to your personality, lifestyle, budget and location.</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">📈</div>
-        <div class="feature-title">Session Tracking</div>
-        <div class="feature-desc">Log every session, add photos and notes, build streaks and earn trophies as you progress.</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">📍</div>
-        <div class="feature-title">Local Discovery</div>
-        <div class="feature-desc">Find venues, clubs and courts near you. Check in when you arrive and earn bonus XP.</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🌍</div>
-        <div class="feature-title">Community Feed</div>
-        <div class="feature-desc">Share sessions, like and comment on posts, and see what fellow hobbyists are up to.</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">⚡</div>
-        <div class="feature-title">XP & Levels</div>
-        <div class="feature-desc">Earn XP for every session, level up from Newcomer to Legend and share your achievement card.</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🏆</div>
-        <div class="feature-title">Weekly Challenges</div>
-        <div class="feature-desc">Complete AI-generated weekly challenges matched to your hobbies and compete with friends.</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="stats">
-    <div class="stats-inner">
-      <div>
-        <div class="stat-num">500+</div>
-        <div class="stat-lbl">Hobbies to discover</div>
-      </div>
-      <div>
-        <div class="stat-num">8</div>
-        <div class="stat-lbl">XP levels to reach</div>
-      </div>
-      <div>
-        <div class="stat-num">Free</div>
-        <div class="stat-lbl">Always free to use</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="cta">
-    <h2>Start your hobby journey today</h2>
-    <p>Download HobbyMatch free on iOS and Android.</p>
-    <div class="download-row">
-      <a href="https://apps.apple.com/app/id6762534449" class="store-btn">
-        <div class="store-btn-icon">🍎</div>
-        <div class="store-btn-text">
-          <span class="store-btn-sub">Download on the</span>
-          <span class="store-btn-name">App Store</span>
+    <section class="section" id="leagues">
+      <div class="wrap split flip">
+        <div>
+          <h2 class="title">Play people nearby and keep a table</h2>
+          <p class="lede">Start a league for padel, tennis, chess, football or anything you play against someone. One on one or in teams, invite only or open to people near you.</p>
+          <ul class="points">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><strong>Results both sides agree on.</strong> You log the score, they confirm it, and only then does it count.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg><span><strong>Invite anyone with a link.</strong> Friends who don't have HobbyMatch yet can join after a quick download.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span><strong>Seasons or ongoing.</strong> Run it for eight weeks and crown a winner, or keep a rolling table.</span></li>
+          </ul>
         </div>
-      </a>
-      <a href="https://play.google.com/store/apps/details?id=com.hobbymatchofficial.app" class="store-btn dark">
-        <div class="store-btn-icon">▶</div>
-        <div class="store-btn-text">
-          <span class="store-btn-sub">Get it on</span>
-          <span class="store-btn-name">Google Play</span>
+        <div class="stage" aria-label="Example of a league table in the app">
+          <div class="card table-card">
+            <div class="table-head"><strong>Brighton Tennis</strong><span>Season 2, week 5</span></div>
+            <table class="league">
+              <thead><tr><th scope="col"><span class="visually-hidden">Position</span></th><th scope="col">Player</th><th scope="col">P</th><th scope="col">W</th><th scope="col">D</th><th scope="col">L</th><th scope="col">Pts</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td>Priya</td><td>6</td><td>4</td><td>1</td><td>1</td><td>13</td></tr>
+                <tr class="you"><td>2</td><td>Sam</td><td>5</td><td>3</td><td>1</td><td>1</td><td>10</td></tr>
+                <tr><td>3</td><td>Tom</td><td>6</td><td>2</td><td>2</td><td>2</td><td>8</td></tr>
+                <tr><td>4</td><td>Hannah</td><td>5</td><td>1</td><td>0</td><td>4</td><td>3</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="confirm"><span><b>Tom</b> says you won 6–4, 6–3</span><span class="btn btn-primary btn-small" aria-hidden="true">Confirm</span></div>
         </div>
-      </a>
-    </div>
-  </section>
+      </div>
+    </section>
 
-  <footer>
-    <div class="footer-logo">hobby<span>match</span></div>
-    <div class="footer-links">
-      <a href="/support">Support</a>
-      <a href="mailto:support@hobbymatch.fit">Contact</a>
+    <section class="section">
+      <div class="wrap split">
+        <div>
+          <h2 class="title">See the weeks add up</h2>
+          <p class="lede">Log a session in a few taps. Hit your weekly goal and your streak grows. Miss a week and a freeze you've earned can cover it.</p>
+          <ul class="points">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20V10M18 20V4M6 20v-4"/></svg><span><strong>Progress by hobby.</strong> Hours, sessions and levels for each thing you do.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.5 13.5 17 22l-5-3-5 3 1.5-8.5"/></svg><span><strong>Weekly challenges.</strong> A small goal each week to try something new.</span></li>
+          </ul>
+        </div>
+        <div class="stage" aria-label="Example of a week of progress in the app">
+          <div class="card week-card">
+            <span class="streak-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.4-.5-2-1-3-1.1-2.1-.2-4 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.2.4-2.3 1-3.2.4 1.5 1.5 2.7 2.5 2.7Z"/></svg>5-week streak</span>
+            <p class="week-title">Two sessions this week</p>
+            <p class="week-sub">Your goal is two. Three hours so far.</p>
+            <div class="bars" aria-hidden="true">
+              <i class="none"></i><i class="none"></i><i class="none"></i><i style="height:78%"></i><i class="none"></i><i class="today" style="height:46%"></i><i class="none"></i>
+            </div>
+            <div class="days" aria-hidden="true"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section closing" id="get">
+      <div class="wrap">
+        <h2 class="title">Start with four questions</h2>
+        <p class="lede">HobbyMatch is free on iPhone. Answer four questions and see what's near you this weekend.</p>
+        <div class="store-row">
+          <a class="btn btn-primary" href="https://apps.apple.com/app/id6762534449">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg>
+            Download for iPhone
+          </a>
+          <span class="store-note">Android is coming soon.</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <a class="wordmark" href="/">hobby<span>match</span></a>
+      <nav aria-label="Footer">
+        <a href="/support">Support</a>
+        <a href="/privacy">Privacy</a>
+        <a href="mailto:support@hobbymatch.fit">support@hobbymatch.fit</a>
+      </nav>
+      <span>&copy; 2026 HobbyMatch Ltd</span>
     </div>
-    <div class="footer-copy">© 2026 HobbyMatch</div>
   </footer>
-
 </body>
 </html>
