@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>You're invited to a league on HobbyMatch</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex">
+  <meta property="og:title" content="Join my league on HobbyMatch">
+  <meta property="og:description" content="Play people nearby, log your results and climb the table.">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #060f0c; color: #fff;
+           min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px 16px; }
+    .card { width: 100%; max-width: 400px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 24px; padding: 32px 24px; text-align: center; }
+    .logo { font-size: 22px; font-weight: 700; }
+    .logo span { color: #5DCAA5; }
+    .eyebrow { margin-top: 28px; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; color: rgba(255,255,255,0.5); }
+    h1 { margin-top: 8px; font-size: 28px; font-weight: 800; letter-spacing: -0.5px; line-height: 1.15; overflow-wrap: anywhere; }
+    .meta { margin-top: 8px; font-size: 15px; color: rgba(255,255,255,0.6); min-height: 1.4em; }
+    .btn { display: block; margin-top: 24px; background: #5DCAA5; color: #06140f; text-decoration: none; font-weight: 700;
+           font-size: 16px; padding: 15px 20px; border-radius: 14px; }
+    .stores { margin-top: 14px; display: flex; gap: 10px; }
+    .store { flex: 1; display: block; background: #fff; color: #000; text-decoration: none; padding: 11px 8px; border-radius: 12px;
+             font-size: 13px; line-height: 1.25; }
+    .store.dark { background: #1a1a1a; color: #fff; border: 1px solid rgba(255,255,255,0.12); }
+    .store small { display: block; font-size: 10px; opacity: 0.65; }
+    .store strong { font-size: 15px; }
+    .code-box { margin-top: 28px; padding: 16px; border-radius: 16px; background: rgba(93,202,165,0.08); border: 1px dashed rgba(93,202,165,0.4); }
+    .code-label { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.45; }
+    .code { margin-top: 10px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 26px; font-weight: 700; letter-spacing: 4px; color: #5DCAA5; }
+    .copy { margin-top: 10px; background: none; border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 999px;
+            padding: 8px 16px; font-size: 13px; font-weight: 600; cursor: pointer; }
+    .note { margin-top: 20px; font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.5; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="logo">hobby<span>match</span></div>
+
+    <div id="invite">
+      <p class="eyebrow">YOU'RE INVITED TO</p>
+      <h1 id="name">a league on HobbyMatch</h1>
+      <p class="meta" id="meta"></p>
+
+      <a class="btn" id="open" href="#">Open in HobbyMatch</a>
+      <div class="stores">
+        <a class="store" href="https://apps.apple.com/app/id6762534449"><small>Download on the</small><strong>App Store</strong></a>
+        <a class="store dark" href="https://play.google.com/store/apps/details?id=com.hobbymatchofficial.app"><small>Get it on</small><strong>Google Play</strong></a>
+      </div>
+
+      <div class="code-box">
+        <p class="code-label">New to HobbyMatch? Install it, then tap your invite link again, or go to <b>Leagues</b> and tap <b>Have an invite code?</b></p>
+        <p class="code" id="code"></p>
+        <button class="copy" id="copy" type="button">Copy code</button>
+      </div>
+    </div>
+
+    <div id="missing" class="hidden">
+      <h1 style="margin-top:28px">This invite isn't working</h1>
+      <p class="meta">The link may have been reset or turned off. Ask whoever sent it for a new one.</p>
+      <a class="btn" href="/">About HobbyMatch</a>
+    </div>
+
+    <p class="note">HobbyMatch helps you find hobbies that fit and people to enjoy them with.</p>
+  </main>
+  <script>
+    (function () {
+      var API = 'https://hobbymatch-api-production.up.railway.app';
+      var m = /^\/l\/([^\/?#]+)\/?$/.exec(location.pathname);
+      var code = m ? decodeURIComponent(m[1]).toUpperCase().replace(/[\s-]/g, '') : '';
+      var valid = /^[A-HJKMNP-Z2-9]{8}$/.test(code);
+      var el = function (id) { return document.getElementById(id); };
+      function showMissing() { el('invite').classList.add('hidden'); el('missing').classList.remove('hidden'); }
+      if (!valid) { showMissing(); return; }
+
+      el('code').textContent = code;
+      el('open').href = 'hobbymatch://l/' + code;
+      el('copy').addEventListener('click', function () {
+        var done = function () { el('copy').textContent = 'Copied'; };
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(code).then(done, function () {});
+      });
+
+      fetch(API + '/api/leagues/invite/' + code, { headers: { Accept: 'application/json' } })
+        .then(function (r) {
+          if (r.status === 404) { showMissing(); return null; }
+          return r.ok ? r.json() : null;
+        })
+        .then(function (body) {
+          var l = body && body.league;
+          if (!l) return;
+          var cap = function (s) { return s ? s.charAt(0).toUpperCase() + s.slice(1) : ''; };
+          el('name').textContent = l.name;
+          document.title = 'Join ' + l.name + ' on HobbyMatch';
+          var parts = [cap(l.hobby), l.kind === 'teams' ? 'Teams' : '1 v 1', l.member_count + (l.member_count === 1 ? ' member' : ' members')];
+          if (l.status === 'finished') parts.push('Season finished');
+          el('meta').textContent = parts.join(' · ');
+        })
+        .catch(function () { /* the page still works without the details */ });
+    })();
+  </script>
+</body>
+</html>

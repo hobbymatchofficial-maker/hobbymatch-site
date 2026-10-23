@@ -54,3 +54,18 @@
   Content-Security-Policy: default-src 'self'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com; connect-src 'self' https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com
   Cache-Control: no-store, max-age=0
   Referrer-Policy: no-referrer
+
+/l/*
+  Content-Security-Policy: default-src 'self'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self' https://hobbymatch-api-production.up.railway.app
+  Cache-Control: no-store, max-age=0
+  Referrer-Policy: no-referrer
+
+/invite
+  Content-Security-Policy: default-src 'self'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self' https://hobbymatch-api-production.up.railway.app
+  Cache-Control: no-store, max-age=0
+  Referrer-Policy: no-referrer
+
+/invite.html
+  Content-Security-Policy: default-src 'self'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self' https://hobbymatch-api-production.up.railway.app
+  Cache-Control: no-store, max-age=0
+  Referrer-Policy: no-referrer

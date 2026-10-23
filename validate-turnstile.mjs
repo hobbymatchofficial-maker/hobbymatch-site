@@ -11,6 +11,10 @@ const redirects = read('_redirects');
 const headers = read('_headers');
 
 const baselineCsp = "default-src 'self'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self'";
+// The league invite page (/l/<code> → invite.html) reads the league's name
+// from the API, so it alone may also connect to the API's origin.
+const inviteCsp = baselineCsp.replace("connect-src 'self'", "connect-src 'self' https://hobbymatch-api-production.up.railway.app");
+const inviteRoutes = new Set(['/l/*', '/invite', '/invite.html']);
 const turnstileCsp = "default-src 'self'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com; connect-src 'self' https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com";
 
 function parseRedirects(contents) {
@@ -60,7 +64,7 @@ function headerValuesForRoute(rules, requestRoute, headerName) {
 const redirectRules = parseRedirects(redirects);
 const headerRules = parseHeaders(headers);
 const htmlFiles = readdirSync(root).filter((file) => file.endsWith('.html'));
-const normalHtmlFiles = htmlFiles.filter((file) => file !== 'turnstile.html');
+const normalHtmlFiles = htmlFiles.filter((file) => file !== 'turnstile.html' && file !== 'invite.html');
 const normalRoutes = new Set();
 
 for (const file of normalHtmlFiles) {
@@ -105,7 +109,7 @@ assert.equal(
 );
 
 const turnstileRoutes = new Set(['/turnstile', '/turnstile.html']);
-const expectedCspRoutes = new Set([...normalRoutes, ...turnstileRoutes]);
+const expectedCspRoutes = new Set([...normalRoutes, ...turnstileRoutes, ...inviteRoutes]);
 const cspRules = headerRules.filter((rule) =>
   rule.headers.some((header) => header.name.toLowerCase() === 'content-security-policy')
 );
@@ -113,7 +117,8 @@ const cspRules = headerRules.filter((rule) =>
 assert.equal(cspRules.length, expectedCspRoutes.size, 'CSP rules must cover exactly the known HTML documents and public routes');
 assert.equal(new Set(cspRules.map((rule) => rule.route)).size, cspRules.length, 'duplicate CSP route rules could emit multiple CSP headers');
 for (const rule of cspRules) {
-  assert.equal(rule.route.includes('*') || rule.route.includes(':'), false, `CSP rule must use an exact route: ${rule.route}`);
+  // The one allowed wildcard is the invite page's /l/* (one rule, its own CSP).
+  if (rule.route !== '/l/*') assert.equal(rule.route.includes('*') || rule.route.includes(':'), false, `CSP rule must use an exact route: ${rule.route}`);
   assert.ok(expectedCspRoutes.has(rule.route), `unexpected CSP route: ${rule.route}`);
 }
 
@@ -122,6 +127,13 @@ for (const route of normalRoutes) {
   assert.deepEqual(values, [baselineCsp], `${route} must receive exactly one baseline CSP`);
   assert.equal(values[0].includes('https://challenges.cloudflare.com'), false, `${route} must not receive Turnstile allowances`);
 }
+
+const inviteRewrite = redirectRules.filter((rule) => rule.source === '/l/*');
+assert.deepEqual(inviteRewrite, [{ source: '/l/*', target: '/invite.html', status: '200' }], '/l/* must rewrite to /invite.html with status 200');
+for (const route of ['/l/*', '/l/AB2CD3EF', '/invite', '/invite.html']) {
+  assert.deepEqual(headerValuesForRoute(headerRules, route, 'Content-Security-Policy'), [inviteCsp], `${route} must receive exactly one invite CSP`);
+}
+assert.equal(inviteCsp.includes('https://challenges.cloudflare.com'), false, 'the invite page must not get Turnstile allowances');
 
 for (const route of turnstileRoutes) {
   assert.deepEqual(
