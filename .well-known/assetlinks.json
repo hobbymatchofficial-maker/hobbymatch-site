@@ -1,0 +1,15 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.hobbymatchofficial.app",
+      "sha256_cert_fingerprints": [
+        "2B:76:B3:14:C1:F0:21:0A:47:90:6C:12:DB:5A:90:BB:F2:EC:FC:56:9A:C4:A7:FD:D1:8E:4A:3F:05:F4:3A:D0",
+        "04:B3:3B:9E:DA:BA:6C:1E:A6:5C:5F:F6:10:A6:93:95:08:40:8C:52:F4:CA:D0:8A:A9:9F:0D:1F:DA:9C:12:DA"
+      ]
+    }
+  }
+]

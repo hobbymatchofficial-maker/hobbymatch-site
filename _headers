@@ -1,6 +1,9 @@
 /.well-known/apple-app-site-association
   Content-Type: application/json
 
+/.well-known/assetlinks.json
+  Content-Type: application/json
+
 /*
   Strict-Transport-Security: max-age=31536000; includeSubDomains
   X-Content-Type-Options: nosniff
