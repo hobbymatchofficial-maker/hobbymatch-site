@@ -4,3 +4,5 @@
 /reset-password  /reset.html      200
 /turnstile       /turnstile.html  200
 /l/*            /invite.html     200
+/e/*            https://hobbymatch-api-production.up.railway.app/e/:splat  200
+/v/*            https://hobbymatch-api-production.up.railway.app/v/:splat  200

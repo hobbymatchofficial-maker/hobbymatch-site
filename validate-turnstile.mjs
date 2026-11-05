@@ -135,6 +135,18 @@ for (const route of ['/l/*', '/l/AB2CD3EF', '/invite', '/invite.html']) {
 }
 assert.equal(inviteCsp.includes('https://challenges.cloudflare.com'), false, 'the invite page must not get Turnstile allowances');
 
+// Shared event and venue pages (/e/<id>, /v/<id>) are rendered by the API,
+// with each event's own link-preview tags, and Netlify passes them through.
+// The API sends their (script-free) CSP, so _headers has no rule for them.
+const API = 'https://hobbymatch-api-production.up.railway.app';
+for (const prefix of ['e', 'v']) {
+  assert.deepEqual(redirectRules.filter((rule) => rule.source === `/${prefix}/*`),
+    [{ source: `/${prefix}/*`, target: `${API}/${prefix}/:splat`, status: '200' }], `/${prefix}/* must pass through to the API with status 200`);
+  assert.deepEqual(headerValuesForRoute(headerRules, `/${prefix}/x`, 'Content-Security-Policy'), [], `/${prefix}/* gets its CSP from the API`);
+}
+// /e/* and /v/* join apple-app-site-association only once an app release
+// handles them; until then an iPhone would open the app and drop the link.
+
 for (const route of turnstileRoutes) {
   assert.deepEqual(
     headerValuesForRoute(headerRules, route, 'Content-Security-Policy'),
@@ -191,6 +203,7 @@ assert.equal(
 
 console.log('PASS /turnstile rewrites to /turnstile.html with status 200');
 console.log('PASS every normal HTML document and public route receives exactly one baseline CSP');
+console.log('PASS /e/* and /v/* pass through to the API');
 console.log('PASS /turnstile and /turnstile.html receive exactly one CSP with the three required Cloudflare allowances');
 console.log('PASS Netlify CSP rules are exact and non-overlapping, with no Cloudflare Pages detachment syntax');
 console.log('PASS global security headers are preserved and no Turnstile secret or Siteverify implementation exists');
