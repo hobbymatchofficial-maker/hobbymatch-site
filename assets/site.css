@@ -61,6 +61,7 @@ a { color: inherit; }
 .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; font-size: 15px; font-weight: 600; }
 .nav-links a { text-decoration: none; color: var(--text-2); }
 .nav-links a:hover { color: var(--text); }
+.nav-links a.btn-primary { color: var(--on-accent); }
 .nav-links .hide-sm { display: none; }
 @media (min-width: 760px) { .nav-links .hide-sm { display: list-item; } }
 .nav.solid { position: static; border-bottom: 1px solid var(--hairline); }
@@ -314,3 +315,29 @@ a { color: inherit; }
 .footer-full nav div { display: grid; gap: 10px; align-content: start; }
 .footer-full h2 { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text-4); }
 .footer-legal { flex-basis: 100%; padding-top: 24px; border-top: 1px solid var(--hairline); }
+
+/* ── business page (/business) ─────────────────────────────────── */
+.biz-hero { padding: 72px 0 64px; }
+@media (min-width: 760px) { .biz-hero { padding: 112px 0 96px; } }
+.biz-hero .display { max-width: 16ch; }
+.biz-hero .store-row { margin-top: 32px; }
+.biz-email { margin-top: 16px; }
+.inline-link { color: var(--accent); }
+.venue-card { padding: 20px 18px 18px; }
+.venue-head { display: flex; align-items: center; gap: 12px; }
+.venue-head > div { flex: 1; min-width: 0; }
+.venue-head > div span { display: block; margin-top: 2px; font-size: 13px; color: var(--text-3); }
+.venue-head .card-title { font-size: 19px; }
+.venue-logo { display: grid; place-items: center; flex: none; width: 44px; height: 44px; border-radius: 10px; background: var(--accent-muted); color: var(--text); font-weight: 800; font-size: 19px; }
+.claimed { flex: none; padding: 4px 10px; border-radius: 999px; background: var(--raised); color: var(--accent); font-size: 12px; font-weight: 700; }
+.venue-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 18px; }
+.venue-stats div { padding: 14px; border-radius: 12px; background: var(--raised); }
+.venue-stats dt { font-size: 13px; color: var(--text-3); }
+.venue-stats dd { margin-top: 2px; font-size: 28px; font-weight: 800; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.venue-sessions { list-style: none; margin-top: 14px; }
+.venue-sessions li { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 0; border-top: 1px solid var(--hairline); }
+.venue-sessions strong { display: block; font-size: 14px; font-weight: 700; color: var(--accent); }
+.venue-sessions li div span { display: block; font-size: 15px; color: var(--text); font-weight: 600; }
+.going-count { flex: none; font-size: 13px; font-weight: 600; color: var(--text-2); }
+.venue-feed { display: flex; align-items: center; gap: 8px; padding-top: 12px; border-top: 1px solid var(--hairline); font-size: 13px; color: var(--text-3); }
+.venue-feed svg { width: 16px; height: 16px; }
