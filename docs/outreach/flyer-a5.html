@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <title>HobbyMatch flyer for clubs (A5)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <style>
+    /* Printable A5 flyer. Print at A5, margins None, background graphics on. */
+    @font-face {
+      font-family: "Archivo";
+      src: url("../../assets/fonts/archivo-var.woff") format("woff");
+      font-weight: 300 800;
+      font-stretch: 62% 125%;
+    }
+    @page { size: A5 portrait; margin: 0; }
+    :root {
+      --ink: #131210;
+      --ink-2: #4A4640;
+      --accent: #5DCAA5;
+      --accent-ink: #1F6B52;
+      --paper: #FFFFFF;
+      --tint: #E9F7F1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { background: #D9D6D1; }
+    body {
+      font-family: "Archivo", system-ui, -apple-system, "Segoe UI", sans-serif;
+      color: var(--ink);
+      -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    }
+    .sheet {
+      width: 148mm; height: 210mm; margin: 10mm auto; padding: 12mm 12mm 10mm;
+      background: var(--paper); display: flex; flex-direction: column;
+      box-shadow: 0 2px 18px rgba(0,0,0,.18); overflow: hidden;
+    }
+    @media print {
+      html { background: none; }
+      .sheet { margin: 0; box-shadow: none; }
+    }
+    .wordmark { font-weight: 800; font-size: 7mm; letter-spacing: -.02em; }
+    .wordmark span { color: var(--accent); }
+    .kicker {
+      margin-top: 9mm; font-size: 3.4mm; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--accent-ink);
+    }
+    h1 {
+      margin-top: 2.5mm; font-weight: 800; font-stretch: 104%;
+      font-size: 11.5mm; line-height: 1.04; letter-spacing: -.025em;
+    }
+    .intro { margin-top: 4.5mm; font-size: 4.1mm; line-height: 1.45; color: var(--ink-2); max-width: 112mm; }
+    ul.points { list-style: none; margin-top: 7mm; display: grid; gap: 3.4mm; }
+    .points li { display: grid; grid-template-columns: 6mm 1fr; gap: 3mm; font-size: 3.9mm; line-height: 1.4; color: var(--ink-2); }
+    .points li b { color: var(--ink); font-weight: 700; }
+    .tick {
+      display: grid; place-items: center; width: 6mm; height: 6mm; border-radius: 50%;
+      background: var(--accent); color: var(--ink);
+    }
+    .tick svg { width: 3.6mm; height: 3.6mm; }
+    .cta {
+      margin-top: auto; display: grid; grid-template-columns: 1fr 34mm; gap: 6mm; align-items: center;
+      padding: 6mm; border-radius: 4mm; background: var(--tint);
+    }
+    .cta h2 { font-size: 5.6mm; font-weight: 800; line-height: 1.15; letter-spacing: -.015em; }
+    .cta ol { margin-top: 2.5mm; padding-left: 4.5mm; font-size: 3.6mm; line-height: 1.5; color: var(--ink-2); }
+    .cta .url { margin-top: 2.5mm; font-size: 3.6mm; font-weight: 700; }
+    .qr { width: 34mm; height: 34mm; padding: 2.5mm; background: #fff; border-radius: 2mm; display: block; }
+    .foot { margin-top: 5mm; display: flex; justify-content: space-between; gap: 4mm; font-size: 3.1mm; color: var(--ink-2); }
+    .foot b { color: var(--ink); }
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <div class="wordmark">hobby<span>match</span></div>
+
+    <p class="kicker">For clubs, studios and venues</p>
+    <h1>Help new people find your club. Free.</h1>
+    <p class="intro">HobbyMatch is a free app that helps people nearby find a hobby and somewhere local to do it. Put your club in front of them.</p>
+
+    <ul class="points">
+      <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span><b>Free to list.</b> Claim your venue in the app. Nothing to pay.</span></li>
+      <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span><b>Add what's on.</b> Your sessions and events, or connect your calendar feed.</span></li>
+      <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span><b>See who's coming.</b> Who's going, and how many people view and follow you.</span></li>
+      <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span><b>Reach local people.</b> Folk nearby looking for exactly your hobby.</span></li>
+    </ul>
+
+    <div class="cta">
+      <div>
+        <h2>Claim your venue in a few minutes</h2>
+        <ol>
+          <li>Download HobbyMatch</li>
+          <li>Find your club and claim it</li>
+          <li>Add your sessions</li>
+        </ol>
+        <p class="url">hobbymatch.fit/business</p>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29" class="qr" role="img" aria-label="QR code linking to hobbymatch.fit/business" shape-rendering="crispEdges"><path stroke="#131210" d="M0 0.5h7m1 0h3m1 0h1m2 0h2m1 0h2m2 0h7m-29 1h1m5 0h1m2 0h4m2 0h1m4 0h1m1 0h1m5 0h1m-29 1h1m1 0h3m1 0h1m1 0h3m1 0h1m3 0h3m3 0h1m1 0h3m1 0h1m-29 1h1m1 0h3m1 0h1m1 0h1m3 0h1m5 0h1m3 0h1m1 0h3m1 0h1m-29 1h1m1 0h3m1 0h1m2 0h2m2 0h1m3 0h2m3 0h1m1 0h3m1 0h1m-29 1h1m5 0h1m1 0h2m2 0h2m2 0h4m2 0h1m5 0h1m-29 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-21 1h2m1 0h2m3 0h2m1 0h2m-20 1h1m1 0h1m1 0h4m1 0h1m2 0h1m2 0h1m2 0h1m1 0h3m1 0h2m1 0h1m-27 1h1m4 0h3m2 0h2m1 0h1m1 0h1m2 0h4m1 0h2m1 0h1m-27 1h6m3 0h4m2 0h3m2 0h1m1 0h4m-27 1h4m2 0h1m2 0h1m1 0h3m5 0h4m1 0h3m-26 1h5m4 0h1m1 0h1m1 0h1m1 0h1m2 0h1m1 0h2m-24 1h1m8 0h2m3 0h2m1 0h5m1 0h1m1 0h1m1 0h1m-25 1h2m1 0h4m2 0h1m1 0h1m1 0h2m3 0h1m5 0h2m-29 1h1m1 0h2m3 0h2m1 0h1m1 0h2m1 0h1m1 0h3m2 0h2m4 0h1m-29 1h2m1 0h2m1 0h2m3 0h3m3 0h1m3 0h1m1 0h1m-20 1h2m1 0h4m1 0h2m1 0h1m1 0h2m2 0h3m3 0h2m-29 1h1m1 0h1m2 0h2m1 0h1m3 0h2m2 0h1m1 0h1m2 0h1m1 0h2m2 0h2m-25 1h1m4 0h1m1 0h1m3 0h4m1 0h1m2 0h3m-26 1h1m1 0h2m2 0h2m3 0h1m1 0h2m5 0h5m1 0h2m-20 1h1m1 0h5m1 0h2m1 0h2m3 0h1m2 0h2m-29 1h7m1 0h1m1 0h1m3 0h1m1 0h3m1 0h1m1 0h1m1 0h4m-28 1h1m5 0h1m1 0h1m1 0h1m2 0h3m2 0h1m1 0h1m3 0h1m1 0h2m-28 1h1m1 0h3m1 0h1m2 0h1m2 0h1m1 0h1m1 0h2m2 0h6m1 0h2m-29 1h1m1 0h3m1 0h1m1 0h1m2 0h1m1 0h1m1 0h2m1 0h5m1 0h2m2 0h1m-29 1h1m1 0h3m1 0h1m4 0h4m2 0h1m1 0h2m3 0h1m1 0h1m1 0h1m-29 1h1m5 0h1m1 0h1m1 0h2m2 0h1m2 0h2m1 0h2m1 0h1m3 0h1m-28 1h7m2 0h2m2 0h2m2 0h1m2 0h1m1 0h1m1 0h2m1 0h1"/></svg>
+    </div>
+
+    <div class="foot">
+      <span>Questions? <b>support@hobbymatch.fit</b></span>
+      <span>Free on iPhone and Android</span>
+    </div>
+  </div>
+</body>
+</html>
