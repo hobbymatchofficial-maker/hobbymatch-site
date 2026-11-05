@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /l/
+Disallow: /invite
+Disallow: /reset
+Disallow: /reset-password
+Disallow: /turnstile
+
+Sitemap: https://hobbymatch.fit/sitemap.xml

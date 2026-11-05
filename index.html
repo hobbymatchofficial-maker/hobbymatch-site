@@ -2,28 +2,59 @@
 <html lang="en-GB">
 <head>
   <meta charset="utf-8">
-  <title>HobbyMatch: find a hobby that fits, near you</title>
+  <title>HobbyMatch: find hobbies, events and people near you</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="description" content="Answer four questions about pace, budget, company and distance. HobbyMatch shows hobbies, venues, sessions and leagues near you, and helps you keep going.">
+  <meta name="description" content="HobbyMatch finds hobbies, events and sessions near you from four quick questions. Meet people who share them, start your own league and get cheered on. Free on iPhone and Android.">
+  <link rel="canonical" href="https://hobbymatch.fit/">
   <meta name="theme-color" content="#131210">
-  <meta property="og:title" content="HobbyMatch: four questions, then something to do on Saturday">
-  <meta property="og:description" content="Hobbies, venues, sessions and leagues near you, picked from four quick questions.">
-  <meta property="og:image" content="https://hobbymatch.fit/assets/img/kickboxing.jpg">
+  <meta name="apple-itunes-app" content="app-id=6762534449">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="HobbyMatch">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:url" content="https://hobbymatch.fit/">
+  <meta property="og:title" content="HobbyMatch: find a hobby near you, and people to do it with">
+  <meta property="og:description" content="Hobbies, events and sessions near you from four quick questions. Meet people, start a league and get cheered on. Free on iPhone and Android.">
+  <meta property="og:image" content="https://hobbymatch.fit/assets/img/og.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="The HobbyMatch wordmark beside a woman in boxing gloves, smiling, with the line: find a hobby near you, and people to do it with.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="HobbyMatch: find a hobby near you, and people to do it with">
+  <meta name="twitter:description" content="Hobbies, events and sessions near you from four quick questions. Meet people, start a league and get cheered on.">
+  <meta name="twitter:image" content="https://hobbymatch.fit/assets/img/og.jpg">
+  <meta name="twitter:image:alt" content="The HobbyMatch wordmark beside a woman in boxing gloves, smiling.">
+
   <link rel="preload" href="/assets/fonts/archivo-var.woff" as="font" type="font/woff" crossorigin>
   <link rel="stylesheet" href="/assets/site.css">
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" type="image/png" sizes="192x192" href="/assets/img/icon-192.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"HobbyMatch","alternateName":"HobbyMatch app","url":"https://hobbymatch.fit/"}</script>
+  <script type="application/ld+json">
+  [
+    {"@context":"https://schema.org","@type":"WebSite","name":"HobbyMatch","alternateName":"HobbyMatch app","url":"https://hobbymatch.fit/"},
+    {"@context":"https://schema.org","@type":"Organization","name":"HobbyMatch Ltd","url":"https://hobbymatch.fit/","logo":"https://hobbymatch.fit/assets/img/icon-512.png","email":"support@hobbymatch.fit","sameAs":["https://apps.apple.com/app/id6762534449","https://play.google.com/store/apps/details?id=com.hobbymatchofficial.app"]},
+    {"@context":"https://schema.org","@type":"MobileApplication","name":"HobbyMatch","operatingSystem":"iOS, Android","applicationCategory":"LifestyleApplication","url":"https://hobbymatch.fit/","installUrl":["https://apps.apple.com/app/id6762534449","https://play.google.com/store/apps/details?id=com.hobbymatchofficial.app"],"offers":{"@type":"Offer","price":"0","priceCurrency":"GBP"}},
+    {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"Is HobbyMatch free?","acceptedAnswer":{"@type":"Answer","text":"Yes. HobbyMatch is free to download on the App Store and Google Play."}},
+      {"@type":"Question","name":"How does it find things near me?","acceptedAnswer":{"@type":"Answer","text":"You tell it how far you'll travel. HobbyMatch then shows venues, clubs, classes, events and sessions inside that distance, using your phone's location if you allow it."}},
+      {"@type":"Question","name":"Can other people see where I am?","acceptedAnswer":{"@type":"Answer","text":"Other people see a general area or a distance, not your exact location. You can also make your profile private in Account, then Private profile."}},
+      {"@type":"Question","name":"Do I need someone to go with?","acceptedAnswer":{"@type":"Answer","text":"No. Join a session another hobbyist has posted, follow people near you who do the same thing, or go on your own."}},
+      {"@type":"Question","name":"How do leagues work?","acceptedAnswer":{"@type":"Answer","text":"Start a league for anything you play against someone, then invite people with a link. You log a score, the other side confirms it, and the table updates. Run it as a season or keep a rolling table."}},
+      {"@type":"Question","name":"Who can use HobbyMatch?","acceptedAnswer":{"@type":"Answer","text":"Anyone aged 13 or over."}}
+    ]}
+  ]
+  </script>
 </head>
 <body>
   <header class="nav">
     <div class="wrap">
-      <a class="wordmark" href="/">hobby<span>match</span></a>
+      <a class="wordmark" href="/" aria-label="HobbyMatch home">hobby<span>match</span></a>
       <ul class="nav-links">
-        <li class="hide-sm"><a href="#how">How it works</a></li>
+        <li class="hide-sm"><a href="#features">Features</a></li>
         <li class="hide-sm"><a href="#leagues">Leagues</a></li>
-        <li class="hide-sm"><a href="/support">Support</a></li>
+        <li class="hide-sm"><a href="#faq">FAQ</a></li>
         <li><a class="btn btn-primary btn-small" href="#get">Get the app</a></li>
       </ul>
     </div>
@@ -32,60 +63,41 @@
   <main>
     <section class="hero">
       <div class="hero-photo">
-        <img src="/assets/img/kickboxing.jpg" srcset="/assets/img/kickboxing-sm.jpg 720w, /assets/img/kickboxing.jpg 1143w" sizes="100vw" alt="A woman in boxing gloves throwing a kick in a gym, smiling.">
+        <img src="/assets/img/kickboxing.jpg" srcset="/assets/img/kickboxing-sm.jpg 720w, /assets/img/kickboxing.jpg 1143w" sizes="100vw" width="1143" height="734" fetchpriority="high" alt="A woman in boxing gloves throwing a kick in a gym, smiling.">
       </div>
       <div class="wrap hero-copy">
-        <h1 class="display">Four questions, then something to do on Saturday.</h1>
-        <p class="hero-sub">Tell HobbyMatch how you want it to feel, what you'd spend, whether you want company and how far you'll travel. It shows you hobbies, venues and sessions near you that fit.</p>
+        <h1 class="display">Find a hobby near you, and people to do&nbsp;it&nbsp;with.</h1>
+        <p class="hero-sub">Answer four quick questions and HobbyMatch shows you hobbies, events and sessions nearby that fit. Then meet people, start a league and keep going. Free on iPhone and Android.</p>
         <div class="store-row">
-          <a class="btn btn-primary" href="https://apps.apple.com/app/id6762534449">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg>
-            Download for iPhone
+          <a class="store-badge" href="https://apps.apple.com/app/id6762534449">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.37 1.43c0 1.14-.49 2.27-1.18 3.08-.74.9-1.99 1.57-2.99 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.57-2.27 1.21-2.98.8-.94 2.14-1.64 3.25-1.68.03.13.05.28.05.43Zm4.56 15.71c-.03.07-.46 1.58-1.52 3.12-.94 1.34-1.94 2.71-3.43 2.71-1.52 0-1.9-.88-3.63-.88-1.7 0-2.3.91-3.67.91-1.38 0-2.33-1.26-3.43-2.8C2.97 18.38 1.93 15.57 1.93 12.92c0-4.28 2.8-6.55 5.55-6.55 1.45 0 2.68.95 3.6.95.87 0 2.22-1.01 3.9-1.01.61 0 2.89.06 4.38 2.19-.13.09-2.38 1.37-2.38 4.19 0 3.26 2.85 4.42 2.95 4.45Z"/></svg>
+            <span><small>Download on the</small>App Store</span>
           </a>
-          <span class="store-note">Android is coming soon.</span>
+          <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.hobbymatchofficial.app">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#00D3FF" d="M3.6 2.1 13.2 12l-9.6 9.9c-.3-.2-.5-.6-.5-1.1V3.2c0-.5.2-.9.5-1.1Z"/><path fill="#00F076" d="M3.6 2.1c.4-.2.9-.2 1.4.1l11.5 6.6-3.3 3.2L3.6 2.1Z"/><path fill="#FF3A44" d="M13.2 12l3.3 3.2L5 21.8c-.5.3-1 .3-1.4.1l9.6-9.9Z"/><path fill="#FFD500" d="m16.5 8.8 3.7 2.1c.9.5.9 1.7 0 2.2l-3.7 2.1-3.3-3.2 3.3-3.2Z"/></svg>
+            <span><small>Get it on</small>Google Play</span>
+          </a>
         </div>
       </div>
     </section>
 
-    <section class="section" id="how">
-      <div class="wrap">
-        <h2 class="title">From not sure what to try, to doing it every week</h2>
-        <ol class="steps">
-          <li>
-            <h3>Answer four questions</h3>
-            <p>Pace, budget, whether you want company, and how far you'll go. About 90 seconds, and nothing else.</p>
-          </li>
-          <li>
-            <h3>See hobbies that fit</h3>
-            <p>Every match says why it suits you, what it costs, and how many places to do it are nearby.</p>
-          </li>
-          <li>
-            <h3>Go along</h3>
-            <p>Join a session another hobbyist has posted, find a club or venue, or start on your own.</p>
-          </li>
-          <li>
-            <h3>Keep it going</h3>
-            <p>Log what you did in a few taps, build a weekly streak, and play people in a league.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <section class="section">
+    <!-- 1. Find hobbies and events near you -->
+    <section class="section" id="features">
       <div class="wrap split">
         <div>
-          <h2 class="title">Matches that say why they fit</h2>
-          <p class="lede">No percentages to decode. A strong match is one that fits all four of your answers, and the card tells you what it's like and what's within reach.</p>
+          <p class="eyebrow">Find</p>
+          <h2 class="title">Hobbies and events near you, picked for you</h2>
+          <p class="lede">Tell HobbyMatch the pace you want, what you'd spend, whether you want company and how far you'll travel. Every match says why it fits and what's within reach.</p>
           <ul class="points">
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span><strong>Real places nearby.</strong> Venues, clubs and classes inside the distance you chose.</span></li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span><strong>What's on this weekend.</strong> Events and sessions for your hobbies, with the hobby named on each one.</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="7" r="4"/><path d="M3 21v-1a6 6 0 0 1 12 0v1M16 3.1a4 4 0 0 1 0 7.8M21 21v-1a6 6 0 0 0-4-5.6"/></svg><span><strong>People who do it too.</strong> Follow hobbyists near you and plan a first session together.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span><strong>About 90 seconds.</strong> Four questions, then you're looking at things to do.</span></li>
           </ul>
         </div>
         <div class="stage" aria-label="Example of a hobby match in the app">
           <article class="card photo-card">
             <div class="photo">
-              <img src="/assets/img/garden.jpg" srcset="/assets/img/garden-sm.jpg 720w, /assets/img/garden.jpg 1200w" sizes="(min-width: 900px) 520px, 100vw" alt="Hands planting seedlings in soil.">
+              <img src="/assets/img/garden.jpg" srcset="/assets/img/garden-sm.jpg 720w, /assets/img/garden.jpg 1200w" sizes="(min-width: 900px) 520px, 100vw" width="1200" height="499" loading="lazy" decoding="async" alt="Hands planting seedlings in soil.">
               <span class="pill">Strong match</span>
             </div>
             <div class="body">
@@ -94,25 +106,46 @@
               <div class="tags"><span class="tag">Up to £100 a year</span><span class="tag">Beginner friendly</span><span class="tag">Outdoors</span></div>
             </div>
           </article>
-          <div class="mini-row">
-            <div class="mini">
-              <img src="/assets/img/kickboxing-sm.jpg" alt="">
-              <div><strong>Kickboxing</strong><span>Strong match, 1.1 miles</span></div>
-            </div>
-            <div class="mini">
-              <img src="/assets/img/leaves-sm.jpg" alt="">
-              <div><strong>Indoor plants</strong><span>Good match, at home</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Meet people who share them -->
+    <section class="section">
+      <div class="wrap split flip">
+        <div>
+          <p class="eyebrow">Meet</p>
+          <h2 class="title">Meet people who love it too</h2>
+          <p class="lede">See sessions other hobbyists near you have posted and tap I'm going. Or post your own and see who turns up. No need to find a friend first.</p>
+          <ul class="points">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="7" r="4"/><path d="M3 21v-1a6 6 0 0 1 12 0v1M16 3.1a4 4 0 0 1 0 7.8M21 21v-1a6 6 0 0 0-4-5.6"/></svg><span><strong>Follow people nearby.</strong> Find hobbyists who do the same things and plan a first session together.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg><span><strong>Your location stays yours.</strong> Others see a general area or distance, never where you are exactly.</span></li>
+          </ul>
+        </div>
+        <div class="stage" aria-label="Example of a group session in the app">
+          <div class="card session-card">
+            <p class="session-when">Saturday, 10:00 <span>1.4 miles away</span></p>
+            <h3 class="card-title">Beginners' padel doubles</h3>
+            <p class="card-text">Posted by <b>Priya</b>. Rackets to borrow, all levels welcome.</p>
+            <div class="session-foot">
+              <div class="going">
+                <span class="avatars" aria-hidden="true"><i>P</i><i>T</i><i>H</i></span>
+                <span>3 of 4 going</span>
+              </div>
+              <span class="btn btn-primary btn-small" aria-hidden="true">I'm going</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- 3. Start your own league -->
     <section class="section" id="leagues">
-      <div class="wrap split flip">
+      <div class="wrap split">
         <div>
-          <h2 class="title">Play people nearby and keep a table</h2>
-          <p class="lede">Start a league for padel, tennis, chess, football or anything you play against someone. One on one or in teams, invite only or open to people near you.</p>
+          <p class="eyebrow">Play</p>
+          <h2 class="title">Start your own league</h2>
+          <p class="lede">Padel, tennis, chess, football or anything you play against someone. One on one or in teams, invite only or open to people near you.</p>
           <ul class="points">
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><strong>Results both sides agree on.</strong> You log the score, they confirm it, and only then does it count.</span></li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg><span><strong>Invite anyone with a link.</strong> Friends who don't have HobbyMatch yet can join after a quick download.</span></li>
@@ -137,54 +170,134 @@
       </div>
     </section>
 
+    <!-- 4. Share and get cheered on -->
     <section class="section">
-      <div class="wrap split">
+      <div class="wrap split flip">
         <div>
-          <h2 class="title">See the weeks add up</h2>
-          <p class="lede">Log a session in a few taps. Hit your weekly goal and your streak grows. Miss a week and a freeze you've earned can cover it.</p>
+          <p class="eyebrow">Share</p>
+          <h2 class="title">Share what you did and get cheered on</h2>
+          <p class="lede">Log a session in a few taps, add a photo if you like, and the people who follow you can cheer and comment. Hit your weekly goal and your streak grows.</p>
           <ul class="points">
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20V10M18 20V4M6 20v-4"/></svg><span><strong>Progress by hobby.</strong> Hours, sessions and levels for each thing you do.</span></li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.5 13.5 17 22l-5-3-5 3 1.5-8.5"/></svg><span><strong>Weekly challenges.</strong> A small goal each week to try something new.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span><strong>You choose who sees it.</strong> Keep your profile public or make it private.</span></li>
           </ul>
         </div>
-        <div class="stage" aria-label="Example of a week of progress in the app">
-          <div class="card week-card">
-            <span class="streak-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.4-.5-2-1-3-1.1-2.1-.2-4 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.2.4-2.3 1-3.2.4 1.5 1.5 2.7 2.5 2.7Z"/></svg>5-week streak</span>
-            <p class="week-title">Two sessions this week</p>
-            <p class="week-sub">Your goal is two. Three hours so far.</p>
-            <div class="bars" aria-hidden="true">
-              <i class="none"></i><i class="none"></i><i class="none"></i><i style="height:78%"></i><i class="none"></i><i class="today" style="height:46%"></i><i class="none"></i>
+        <div class="stage" aria-label="Example of a shared session in the app">
+          <article class="card post-card">
+            <div class="post-head">
+              <span class="avatar" aria-hidden="true">H</span>
+              <div><strong>Hannah</strong><span>Indoor plants, 45 min</span></div>
+              <span class="streak-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.4-.5-2-1-3-1.1-2.1-.2-4 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.2.4-2.3 1-3.2.4 1.5 1.5 2.7 2.5 2.7Z"/></svg>5 weeks</span>
             </div>
-            <div class="days" aria-hidden="true"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span></div>
-          </div>
+            <img src="/assets/img/leaves.jpg" srcset="/assets/img/leaves-sm.jpg 720w, /assets/img/leaves.jpg 1105w" sizes="(min-width: 900px) 520px, 100vw" width="1105" height="516" loading="lazy" decoding="async" alt="Green leaves of a house plant.">
+            <div class="body">
+              <p class="card-text">Repotted everything on the windowsill. The monstera finally has room.</p>
+              <div class="cheers">
+                <span class="cheer-btn" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.5-9.2C1.2 8.6 3.3 5 6.8 5c2 0 3.4 1.1 4.2 2.4h2C13.8 6.1 15.2 5 17.2 5c3.5 0 5.6 3.6 4.3 6.8C19.5 16.4 12 21 12 21Z"/></svg>Cheer</span>
+                <span><b>Sam</b>, <b>Priya</b> and 6 others cheered</span>
+              </div>
+              <p class="comment"><b>Tom</b> Looks brilliant. Cuttings please!</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="how">
+      <div class="wrap">
+        <h2 class="title">From not sure what to try, to doing it every week</h2>
+        <ol class="steps">
+          <li>
+            <h3>Answer four questions</h3>
+            <p>Pace, budget, whether you want company, and how far you'll go. About 90 seconds.</p>
+          </li>
+          <li>
+            <h3>See hobbies that fit</h3>
+            <p>Every match says why it suits you, what it costs, and how many places to do it are nearby.</p>
+          </li>
+          <li>
+            <h3>Go along</h3>
+            <p>Join a session another hobbyist has posted, find a club or venue, or start on your own.</p>
+          </li>
+          <li>
+            <h3>Keep it going</h3>
+            <p>Log what you did, build a weekly streak, and play people in a league.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="wrap faq-wrap">
+        <h2 class="title">Questions</h2>
+        <div class="faq">
+          <details>
+            <summary>Is HobbyMatch free?</summary>
+            <p>Yes. HobbyMatch is free to download on the App Store and Google Play.</p>
+          </details>
+          <details>
+            <summary>How does it find things near me?</summary>
+            <p>You tell it how far you'll travel. HobbyMatch then shows venues, clubs, classes, events and sessions inside that distance, using your phone's location if you allow it.</p>
+          </details>
+          <details>
+            <summary>Can other people see where I am?</summary>
+            <p>Other people see a general area or a distance, not your exact location. You can also make your profile private in Account, then Private profile. Our <a href="/privacy">privacy policy</a> has the details.</p>
+          </details>
+          <details>
+            <summary>Do I need someone to go with?</summary>
+            <p>No. Join a session another hobbyist has posted, follow people near you who do the same thing, or go on your own.</p>
+          </details>
+          <details>
+            <summary>How do leagues work?</summary>
+            <p>Start a league for anything you play against someone, then invite people with a link. You log a score, the other side confirms it, and the table updates. Run it as a season or keep a rolling table.</p>
+          </details>
+          <details>
+            <summary>Who can use HobbyMatch?</summary>
+            <p>Anyone aged 13 or over. If you need help with your account, see <a href="/support">Support</a>.</p>
+          </details>
         </div>
       </div>
     </section>
 
     <section class="section closing" id="get">
       <div class="wrap">
-        <h2 class="title">Start with four questions</h2>
-        <p class="lede">HobbyMatch is free on iPhone. Answer four questions and see what's near you this weekend.</p>
+        <h2 class="title">Find something to do this weekend</h2>
+        <p class="lede">HobbyMatch is free on iPhone and Android. Answer four questions and see what's near you.</p>
         <div class="store-row">
-          <a class="btn btn-primary" href="https://apps.apple.com/app/id6762534449">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg>
-            Download for iPhone
+          <a class="store-badge" href="https://apps.apple.com/app/id6762534449">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.37 1.43c0 1.14-.49 2.27-1.18 3.08-.74.9-1.99 1.57-2.99 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.57-2.27 1.21-2.98.8-.94 2.14-1.64 3.25-1.68.03.13.05.28.05.43Zm4.56 15.71c-.03.07-.46 1.58-1.52 3.12-.94 1.34-1.94 2.71-3.43 2.71-1.52 0-1.9-.88-3.63-.88-1.7 0-2.3.91-3.67.91-1.38 0-2.33-1.26-3.43-2.8C2.97 18.38 1.93 15.57 1.93 12.92c0-4.28 2.8-6.55 5.55-6.55 1.45 0 2.68.95 3.6.95.87 0 2.22-1.01 3.9-1.01.61 0 2.89.06 4.38 2.19-.13.09-2.38 1.37-2.38 4.19 0 3.26 2.85 4.42 2.95 4.45Z"/></svg>
+            <span><small>Download on the</small>App Store</span>
           </a>
-          <span class="store-note">Android is coming soon.</span>
+          <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.hobbymatchofficial.app">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#00D3FF" d="M3.6 2.1 13.2 12l-9.6 9.9c-.3-.2-.5-.6-.5-1.1V3.2c0-.5.2-.9.5-1.1Z"/><path fill="#00F076" d="M3.6 2.1c.4-.2.9-.2 1.4.1l11.5 6.6-3.3 3.2L3.6 2.1Z"/><path fill="#FF3A44" d="M13.2 12l3.3 3.2L5 21.8c-.5.3-1 .3-1.4.1l9.6-9.9Z"/><path fill="#FFD500" d="m16.5 8.8 3.7 2.1c.9.5.9 1.7 0 2.2l-3.7 2.1-3.3-3.2 3.3-3.2Z"/></svg>
+            <span><small>Get it on</small>Google Play</span>
+          </a>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
+  <footer class="footer footer-full">
     <div class="wrap">
-      <a class="wordmark" href="/">hobby<span>match</span></a>
+      <div class="footer-brand">
+        <a class="wordmark" href="/">hobby<span>match</span></a>
+        <p>Find a hobby near you, and people to do it with.</p>
+      </div>
       <nav aria-label="Footer">
-        <a href="/support">Support</a>
-        <a href="/privacy">Privacy</a>
-        <a href="mailto:support@hobbymatch.fit">support@hobbymatch.fit</a>
+        <div>
+          <h2>Get the app</h2>
+          <a href="https://apps.apple.com/app/id6762534449">App Store</a>
+          <a href="https://play.google.com/store/apps/details?id=com.hobbymatchofficial.app">Google Play</a>
+        </div>
+        <div>
+          <h2>Help</h2>
+          <a href="/support">Support</a>
+          <a href="/privacy">Privacy policy</a>
+          <a href="mailto:support@hobbymatch.fit">support@hobbymatch.fit</a>
+        </div>
       </nav>
-      <span>&copy; 2026 HobbyMatch Ltd</span>
+      <span class="footer-legal">&copy; 2026 HobbyMatch Ltd</span>
     </div>
   </footer>
 </body>
