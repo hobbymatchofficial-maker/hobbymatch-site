@@ -220,3 +220,97 @@ a { color: inherit; }
 .contact-card { margin-top: 32px; padding: 22px 20px; border-radius: 14px; background: var(--surface); }
 .contact-card p:first-child { margin-top: 0; }
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ── landing page: store badges, feature visuals, FAQ, full footer ── */
+.store-badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  min-height: 56px; padding: 0 18px 0 14px; border-radius: 10px;
+  background: #000; color: #fff; border: 1px solid rgba(246, 242, 236, .38);
+  text-decoration: none; font-weight: 700; font-size: 19px; line-height: 1.05; letter-spacing: -.01em;
+  transition: transform .12s ease, border-color .12s ease;
+}
+.store-badge:hover { border-color: var(--text); }
+.store-badge:active { transform: scale(.98); }
+.store-badge svg { width: 26px; height: 26px; flex: none; }
+.store-badge small { display: block; font-size: 11px; font-weight: 500; letter-spacing: .01em; opacity: .85; margin-bottom: 2px; }
+@media (max-width: 420px) {
+  .store-row { flex-wrap: nowrap; gap: 10px; }
+  .store-badge { flex: 1 1 0; min-width: 0; padding: 0 10px; gap: 8px; font-size: 17px; }
+  .store-badge svg { width: 22px; height: 22px; }
+}
+
+/* Hero on phones: shorter, so the headline and both store buttons sit in the first screen. */
+@media (max-width: 759px) {
+  .hero { min-height: 0; padding-top: 46vh; padding-top: min(46svh, 360px); }
+  .hero-copy { padding-bottom: 40px; }
+  .hero .display { font-size: clamp(36px, 9.6vw, 48px); max-width: 14ch; }
+  .hero-sub { margin-top: 14px; font-size: 16px; }
+  .hero .store-row { margin-top: 24px; }
+  .hero-photo::after {
+    background:
+      linear-gradient(180deg, rgba(19,18,16,.55) 0, rgba(19,18,16,0) 16%),
+      linear-gradient(180deg, rgba(19,18,16,0) 26%, rgba(19,18,16,.82) 52%, var(--bg) 70%);
+  }
+}
+
+.eyebrow { margin-bottom: 12px; font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+
+/* Group session */
+.session-card { padding: 20px 18px; }
+.session-when { font-size: 14px; font-weight: 700; color: var(--accent); margin-bottom: 8px; }
+.session-when span { margin-left: 8px; color: var(--text-3); font-weight: 600; }
+.session-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--hairline); }
+.going { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-2); }
+.avatars { display: flex; }
+.avatars i, .avatar {
+  display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 999px;
+  background: var(--raised); color: var(--text); font-style: normal; font-size: 13px; font-weight: 700;
+  border: 2px solid var(--surface);
+}
+.avatars i + i { margin-left: -10px; }
+.avatars i:nth-child(2) { background: var(--accent-muted); }
+.avatars i:nth-child(3) { background: #4A3F2E; }
+
+/* Shared session */
+.post-head { display: flex; align-items: center; gap: 12px; padding: 16px 18px; }
+.post-head > div { flex: 1; min-width: 0; }
+.post-head strong { display: block; font-size: 15px; font-weight: 700; }
+.post-head > div span { display: block; font-size: 13px; color: var(--text-3); }
+.avatar { width: 38px; height: 38px; background: #4A3F2E; border: 0; }
+.post-card > img { width: 100%; height: auto; aspect-ratio: 16 / 8; object-fit: cover; }
+.post-card .body { padding: 16px 18px 20px; }
+.post-card .card-text { margin-top: 0; color: var(--text); }
+.cheers { display: flex; align-items: center; gap: 12px; margin-top: 14px; font-size: 13px; color: var(--text-3); }
+.cheers b, .comment b { color: var(--text); font-weight: 700; }
+.cheer-btn { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 999px; background: var(--raised); color: var(--accent); font-size: 13px; font-weight: 700; flex: none; }
+.cheer-btn svg { width: 14px; height: 14px; }
+.comment { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--hairline); font-size: 14px; color: var(--text-2); }
+.comment b { margin-right: 6px; }
+
+/* FAQ */
+.faq-wrap { display: grid; gap: 32px; }
+@media (min-width: 900px) { .faq-wrap { grid-template-columns: 1fr 2fr; gap: 72px; align-items: start; } }
+.faq { border-top: 1px solid var(--hairline); }
+.faq details { border-bottom: 1px solid var(--hairline); }
+.faq summary {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 20px 0; min-height: 44px; cursor: pointer; list-style: none;
+  font-size: 18px; font-weight: 700; line-height: 1.3;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after {
+  content: ""; flex: none; width: 10px; height: 10px; margin-right: 4px;
+  border-right: 2px solid var(--text-3); border-bottom: 2px solid var(--text-3);
+  transform: translateY(-3px) rotate(45deg); transition: transform .15s ease;
+}
+.faq details[open] summary::after { transform: translateY(2px) rotate(-135deg); }
+.faq details p { padding: 0 0 22px; max-width: 60ch; color: var(--text-2); }
+.faq a { color: var(--accent); }
+
+/* Full footer (landing page) */
+.footer-full .wrap { align-items: flex-start; gap: 32px 48px; }
+.footer-brand p { margin-top: 8px; max-width: 26ch; }
+.footer-full nav { gap: 32px 64px; }
+.footer-full nav div { display: grid; gap: 10px; align-content: start; }
+.footer-full h2 { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text-4); }
+.footer-legal { flex-basis: 100%; padding-top: 24px; border-top: 1px solid var(--hairline); }
