@@ -139,13 +139,14 @@ assert.equal(inviteCsp.includes('https://challenges.cloudflare.com'), false, 'th
 // with each event's own link-preview tags, and Netlify passes them through.
 // The API sends their (script-free) CSP, so _headers has no rule for them.
 const API = 'https://hobbymatch-api-production.up.railway.app';
-for (const prefix of ['e', 'v']) {
+for (const prefix of ['e', 'v', 's']) {
   assert.deepEqual(redirectRules.filter((rule) => rule.source === `/${prefix}/*`),
     [{ source: `/${prefix}/*`, target: `${API}/${prefix}/:splat`, status: '200' }], `/${prefix}/* must pass through to the API with status 200`);
   assert.deepEqual(headerValuesForRoute(headerRules, `/${prefix}/x`, 'Content-Security-Policy'), [], `/${prefix}/* gets its CSP from the API`);
 }
 // /e/* and /v/* join apple-app-site-association only once an app release
 // handles them; until then an iPhone would open the app and drop the link.
+// /s/* (session invites) is handled by the app from the Nov 2026 update.
 
 for (const route of turnstileRoutes) {
   assert.deepEqual(

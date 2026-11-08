@@ -7,7 +7,8 @@
         "paths": [
           "/reset-password",
           "/reset-password/*",
-          "/l/*"
+          "/l/*",
+          "/s/*"
         ]
       }
     ]
