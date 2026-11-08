@@ -7,3 +7,4 @@
 /l/*            /invite.html     200
 /e/*            https://hobbymatch-api-production.up.railway.app/e/:splat  200
 /v/*            https://hobbymatch-api-production.up.railway.app/v/:splat  200
+/s/*            https://hobbymatch-api-production.up.railway.app/s/:splat  200
