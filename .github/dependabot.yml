@@ -1,0 +1,10 @@
+# Keeps the pinned GitHub Actions up to date, but only with releases at
+# least 7 days old (same rule as the app and API repos).
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    cooldown:
+      default-days: 7
