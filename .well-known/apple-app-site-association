@@ -8,7 +8,9 @@
           "/reset-password",
           "/reset-password/*",
           "/l/*",
-          "/s/*"
+          "/s/*",
+          "/e/*",
+          "/v/*"
         ]
       }
     ]
