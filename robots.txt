@@ -1,8 +1,44 @@
-User-agent: *
+# HobbyMatch: https://hobbymatch.fit
+#
+# Search engines and AI assistants are welcome to read and cite the public
+# pages. Each crawler below is named so it's clear we allow it; a crawler
+# that matches a named group follows only that group, so every group repeats
+# the private routes.
+#
+# Private routes (blocked for everyone): league invite links (/l/, /invite),
+# password reset (/reset, /reset-password), the sign-up check (/turnstile),
+# group-session invite links (/s/), the referral counter (/api/) and internal
+# docs (/docs/).
+
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Google-Extended
+Allow: /
 Disallow: /l/
 Disallow: /invite
 Disallow: /reset
 Disallow: /reset-password
 Disallow: /turnstile
+Disallow: /s/
+Disallow: /api/
+Disallow: /docs/
+
+User-agent: *
+Allow: /
+Disallow: /l/
+Disallow: /invite
+Disallow: /reset
+Disallow: /reset-password
+Disallow: /turnstile
+Disallow: /s/
+Disallow: /api/
+Disallow: /docs/
 
 Sitemap: https://hobbymatch.fit/sitemap.xml

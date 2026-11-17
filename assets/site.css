@@ -341,3 +341,19 @@ a { color: inherit; }
 .going-count { flex: none; font-size: 13px; font-weight: 600; color: var(--text-2); }
 .venue-feed { display: flex; align-items: center; gap: 8px; padding-top: 12px; border-top: 1px solid var(--hairline); font-size: 13px; color: var(--text-3); }
 .venue-feed svg { width: 16px; height: 16px; }
+
+/* ---------- About, FAQ, reviews ---------- */
+.faq-more { margin-top: 20px; font-size: 15px; }
+.faq-more a { color: var(--accent); }
+.page .faq { margin-top: 24px; }
+.page .faq h2 { margin-top: 40px; }
+.page .faq details p { margin-top: 0; }
+.page .todo { padding: 2px 6px; border-radius: 6px; background: var(--raised); color: var(--text-3); font-size: 14px; }
+.reviews { list-style: none; padding-left: 0 !important; margin-top: 28px; display: grid; gap: 16px; }
+.reviews li { margin-top: 0; padding: 20px; border-radius: 14px; background: var(--surface); max-width: none; }
+.reviews .stars { color: var(--accent); font-size: 18px; letter-spacing: 2px; }
+.reviews blockquote p { margin-top: 10px; color: var(--text); }
+.reviews footer { margin-top: 12px; font-size: 14px; color: var(--text-3); }
+.reviews footer a { color: var(--accent); }
+.policy { margin-top: 48px; padding: 22px 20px; border-radius: 14px; border: 1px solid var(--hairline); }
+.policy h2 { margin-top: 0 !important; }

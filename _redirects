@@ -2,9 +2,23 @@
 /privacy         /privacy.html    200
 /support         /support.html    200
 /business        /business.html   200
+/about           /about.html      200
+/faq             /faq.html        200
+/reviews         /reviews.html    200
+/home            /                301
+/home.html       /                301
 /reset-password  /reset.html      200
 /turnstile       /turnstile.html  200
 /l/*            /invite.html     200
 /e/*            https://hobbymatch-api-production.up.railway.app/e/:splat  200
 /v/*            https://hobbymatch-api-production.up.railway.app/v/:splat  200
 /s/*            https://hobbymatch-api-production.up.railway.app/s/:splat  200
+# Pages built from live listings (hobbymatch-api src/services/seoPages.js).
+# The sitemap is built there too, so it's always current: no sitemap.xml file here.
+/sitemap.xml    https://hobbymatch-api-production.up.railway.app/sitemap.xml  200
+/hobbies        https://hobbymatch-api-production.up.railway.app/hobbies  200
+/hobbies/*      https://hobbymatch-api-production.up.railway.app/hobbies/:splat  200
+/near/*         https://hobbymatch-api-production.up.railway.app/near/:splat  200
+/events/*       https://hobbymatch-api-production.up.railway.app/events/:splat  200
+# Counts visits from AI assistants (assets/ref.js; privacy policy section 6).
+/api/r          https://hobbymatch-api-production.up.railway.app/api/referral  200

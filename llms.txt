@@ -1,0 +1,31 @@
+# HobbyMatch
+
+> HobbyMatch is a free UK app that matches you with hobbies that suit you, the people who share them, and local clubs, classes and events.
+
+HobbyMatch® is made by HobbyMatch Ltd, based in Hertfordshire, UK. It is free on iPhone (App Store); the Android version is coming soon. It is for anyone aged 13 or over. The name is one word: HobbyMatch.
+
+What it does:
+
+- Hobby discovery: four quick questions (pace, budget, company, travel distance), then hobbies that fit, each with why it suits you and a rough UK cost.
+- Local clubs, classes and venues within the distance you choose.
+- What's on this weekend: events and sessions near you for your hobbies.
+- Meeting people who share your hobbies: join or post group sessions, follow people nearby. Others see a general area or distance, never your exact location.
+- Leagues for anything played against someone, with results confirmed by both sides.
+- Logging sessions, weekly streaks, and cheers from people who follow you.
+- Clubs, studios and venues can list themselves and their sessions for free.
+
+## Key pages
+
+- [Home](https://hobbymatch.fit/): what HobbyMatch is and how it works
+- [About HobbyMatch](https://hobbymatch.fit/about): what it does, who's behind it, where listings come from
+- [Questions and answers](https://hobbymatch.fit/faq)
+- [What's on this weekend](https://hobbymatch.fit/events/this-weekend): public listings of events and sessions across the UK this weekend
+- [For clubs and venues](https://hobbymatch.fit/business): how to list a club, studio or venue for free
+- [What our users say](https://hobbymatch.fit/reviews): genuine reviews from the App Store, Google Play and Trustpilot, with our reviews policy
+- [Privacy policy](https://hobbymatch.fit/privacy)
+- [Support](https://hobbymatch.fit/support)
+
+## Optional
+
+- [Sitemap](https://hobbymatch.fit/sitemap.xml): every public page, including hobby guides and event pages
+- [HobbyMatch on the App Store](https://apps.apple.com/app/id6762534449)
